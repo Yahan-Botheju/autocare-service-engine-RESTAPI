@@ -1,4 +1,4 @@
-package lk.autocare.vehicle_service_system.domain.model;
+package lk.autocare.vehicle_service_system.domain.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

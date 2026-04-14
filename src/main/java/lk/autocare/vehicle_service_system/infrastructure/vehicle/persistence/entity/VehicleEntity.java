@@ -1,10 +1,11 @@
-package lk.autocare.vehicle_service_system.infrastructure.persistence;
+package lk.autocare.vehicle_service_system.infrastructure.vehicle.persistence.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lk.autocare.vehicle_service_system.domain.model.VehicleFuelType;
+import lk.autocare.vehicle_service_system.domain.models.VehicleFuelType;
+import lk.autocare.vehicle_service_system.infrastructure.customer.persistence.entity.CustomerEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
