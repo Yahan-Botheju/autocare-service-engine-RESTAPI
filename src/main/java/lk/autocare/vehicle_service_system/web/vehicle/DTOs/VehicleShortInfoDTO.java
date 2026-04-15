@@ -1,4 +1,4 @@
-package lk.autocare.vehicle_service_system.web.customer.DTOs;
+package lk.autocare.vehicle_service_system.web.vehicle.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerShortInfoDTO {
+public class VehicleShortInfoDTO {
     private Long vehicleId;
     private String vehicleNumber;
     private String vehicleModel;
