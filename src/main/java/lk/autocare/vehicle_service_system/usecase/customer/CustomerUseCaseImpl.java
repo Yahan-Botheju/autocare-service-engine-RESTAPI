@@ -13,7 +13,14 @@ public class CustomerUseCaseImpl implements  CustomerUseCase {
     private final CustomerRepository customerRepository;
 
     //get all customers
+    @Override
     public List<Customer> getAllCustomers(){
         return customerRepository.getAllCustomers();
+    }
+
+    //save new customer
+    @Override
+    public void saveCustomer(Customer customer){
+        customerRepository.saveCustomer(customer);
     }
 }
