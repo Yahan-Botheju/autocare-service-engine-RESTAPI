@@ -11,4 +11,7 @@ public interface CustomerRepository {
 
     //save new customer
     void saveCustomer(Customer customer);
+
+    //update customer
+    void updateCustomer(Long customerId, Customer customer);
 }
