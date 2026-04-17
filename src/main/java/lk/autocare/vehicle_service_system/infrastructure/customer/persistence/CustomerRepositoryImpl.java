@@ -49,4 +49,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
        //save in db
        jpaCustomerRepository.save(updatedEntity);
     }
+
+    //delete customer
+    @Override
+    public void deleteCustomer(Long customerId){
+        //check customer availability
+        if(!jpaCustomerRepository.existsById(customerId)){
+            throw new RuntimeException("Invalid customer id");
+        }
+        //then delete customer
+        jpaCustomerRepository.deleteById(customerId);
+    }
 }
