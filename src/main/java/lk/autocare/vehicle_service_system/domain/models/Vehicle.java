@@ -20,5 +20,5 @@ public class Vehicle {
     private LocalDate nextServiceDate;
     private int mileage;
     //customer object
-    private Customer customer;
+//    private Customer customer;
 }
