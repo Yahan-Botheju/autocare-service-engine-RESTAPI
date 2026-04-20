@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class VehiclePersistenceBeanConfig {
+class VehiclePersistenceBeanConfig {
     @Bean
-    public VehicleRepository vehicleRepository(
+    VehicleRepository vehicleRepository(
             JpaVehicleRepository    jpaVehicleRepository,
             VehiclePersistenceMapper vehiclePersistenceMapper
     ) {

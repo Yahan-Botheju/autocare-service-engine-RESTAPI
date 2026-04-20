@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class VehicleBeanConfig {
+class VehicleBeanConfig {
     @Bean
-    public VehicleUseCase vehicleUseCase(
+    VehicleUseCase vehicleUseCase(
             VehicleRepository vehicleRepository,
             CustomerRepository customerRepository,
             VehicleWebMapper vehicleWebMapper) {
