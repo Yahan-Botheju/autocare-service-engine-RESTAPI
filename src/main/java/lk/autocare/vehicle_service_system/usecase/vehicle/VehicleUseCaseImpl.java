@@ -10,6 +10,7 @@ import lk.autocare.vehicle_service_system.web.vehicle.webMappers.VehicleWebMappe
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class VehicleUseCaseImpl implements  VehicleUseCase{
@@ -62,5 +63,39 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
         return turnToResponseDTO;
     }
 
+    //update vehicle details
+    @Override
+    public VehicleResponseDTO updateVehicle(Long vehicleId, Vehicle vehicle){
+        //check vehicle availability
+        if(vehicleRepository.findById(vehicleId).isEmpty()){
+            throw new ResourceNotFoundException("Vehicle with id not found" + " " + vehicleId);
+        }
 
+        //set to update method in repo for update values
+        Vehicle updatedVehicle = vehicleRepository.updateVehicle(vehicleId, vehicle);
+
+        //updated model check with customer ID
+        Customer customer = getCustomerDetails(updatedVehicle.getCustomerId());
+
+        //turn to DTO with customer name and id included
+        VehicleResponseDTO turnToResponseDTO = vehicleWebMapper.toResponseDTO(updatedVehicle);
+                           turnToResponseDTO.setCustomerName(customer.getCustomerName());
+
+        // return response dto
+        return turnToResponseDTO;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

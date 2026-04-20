@@ -32,7 +32,7 @@ public class VehicleEntity {
     private int mileage;
 
     @Enumerated(EnumType.STRING)
-    private VehicleFuelType fuelType;
+    private VehicleFuelType vehicleFuelType;
 
     @ManyToOne
     @JoinColumn(name = "customerId", nullable = false)

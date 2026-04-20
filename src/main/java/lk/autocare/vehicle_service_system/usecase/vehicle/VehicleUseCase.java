@@ -12,4 +12,7 @@ public interface VehicleUseCase {
 
     //create vehicle
     VehicleResponseDTO saveVehicle(Vehicle vehicle);
+
+    //update vehicle details
+    VehicleResponseDTO updateVehicle(Long vehicleId, Vehicle vehicle);
 }

@@ -7,12 +7,10 @@ import lk.autocare.vehicle_service_system.infrastructure.customer.persistence.jp
 import lk.autocare.vehicle_service_system.infrastructure.customer.persistence.mapper.CustomerPersistenceMapper;
 import lk.autocare.vehicle_service_system.GlobalExceptionHandler.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 @AllArgsConstructor
 public class CustomerRepositoryImpl implements CustomerRepository {
 

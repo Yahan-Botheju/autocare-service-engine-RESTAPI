@@ -15,4 +15,7 @@ public interface VehicleRepository {
 
     //create vehicle
     Vehicle saveVehicle(Vehicle vehicle);
+
+    //update vehicle details
+    Vehicle updateVehicle(Long vehicleId, Vehicle vehicle);
 }
