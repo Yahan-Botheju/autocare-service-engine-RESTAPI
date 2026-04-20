@@ -26,10 +26,8 @@ public class VehicleController {
     //get all vehicles
     @GetMapping("/all")
     public List<VehicleResponseDTO> allVehicles() {
-        //get all details as domain model
-        List<Vehicle> vehicles = vehicleUseCase.getAllVehicles();
-        //domain model to response dto
-        return vehicles.stream().map(e -> vehicleWebMapper.toResponseDTO(e)).toList();
+        //just call and return get all vehicles
+        return vehicleUseCase.getAllVehicles();
     }
 
     //register vehicle

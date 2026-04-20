@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CustomerPersistenceBeanConfig {
+class CustomerPersistenceBeanConfig {
     @Bean
-    public CustomerRepository customerRepository(
+    CustomerRepository customerRepository(
             JpaCustomerRepository jpaCustomerRepository,
             CustomerPersistenceMapper customerPersistenceMapper
     ) {

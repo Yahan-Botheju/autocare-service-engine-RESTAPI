@@ -32,7 +32,7 @@ public class CustomerController {
     }
 
     //save new customer
-    @PatchMapping("/register")
+    @PostMapping("/register")
     public ResponseEntity<String> saveCustomer(
             @RequestBody CustomerRequestDTO customerRequestDTO
     ){
