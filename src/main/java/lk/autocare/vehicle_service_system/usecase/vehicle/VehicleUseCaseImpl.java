@@ -41,8 +41,23 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
 
     //get all vehicle
     @Override
-    public List<Vehicle> getAllVehicles(){
-        return vehicleRepository.getAllVehicles();
+    public List<VehicleResponseDTO> getAllVehicles(){
+        //get all vehicles
+        List<Vehicle> allVehicles = vehicleRepository.getAllVehicles();
+
+        //set customer name and id related to vehicle and return as list of each vehicles
+        return allVehicles.stream().map(vehicles -> {
+
+            //set vehicles along with customer id using custom method
+            Customer customer = getCustomerDetails(vehicles.getCustomerId());
+
+            //turn dto and set it to customer name, then return
+            VehicleResponseDTO toResponseDTO = vehicleWebMapper.toResponseDTO(vehicles);
+                                toResponseDTO.setCustomerName(customer.getCustomerName());
+
+             return toResponseDTO;
+
+        }).toList();
     }
 
     //create vehicle
