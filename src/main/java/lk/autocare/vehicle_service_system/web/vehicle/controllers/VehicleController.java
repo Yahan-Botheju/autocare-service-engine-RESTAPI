@@ -34,14 +34,7 @@ public class VehicleController {
 
         //turn to list
         List<VehicleResponseDTO> responseDTOS = vehiclesResults.stream()
-                 .map(vehicleUpdateResult -> {
-
-                     //turn into response dto and attached customer id and name then return
-                     VehicleResponseDTO responseDTO = vehicleWebMapper.toResponseDTO(vehicleUpdateResult.getVehicle());
-                                        responseDTO.setCustomerId(vehicleUpdateResult.getCustomer().getCustomerId());
-                                        responseDTO.setCustomerName(vehicleUpdateResult.getCustomer().getCustomerName());
-                                        return responseDTO;
-                 }).toList();
+                 .map(vehicleResult -> vehicleWebMapper.customResponseDTO(vehicleResult)).toList();
 
         //return response
         return ResponseEntity.status(HttpStatus.OK).body(
@@ -64,9 +57,8 @@ public class VehicleController {
         //get domain model and turn into responseDTO
         VehicleUpdateResult registerResult = vehicleUseCase.saveVehicle(vehicleDomainModel);
 
-        VehicleResponseDTO responseDTO = vehicleWebMapper.toResponseDTO(registerResult.getVehicle());
-                           responseDTO.setCustomerId(registerResult.getCustomer().getCustomerId());
-                           responseDTO.setCustomerName(registerResult.getCustomer().getCustomerName());
+        //use mapper for create response dto
+        VehicleResponseDTO responseDTO = vehicleWebMapper.customResponseDTO(registerResult);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 new StandardResponse<>(
@@ -90,16 +82,13 @@ public class VehicleController {
         //set id and domain model to usecase
         VehicleUpdateResult result = vehicleUseCase.updateVehicle(vehicleId, vehicleDomainModel);
 
-        //make response dto using customer model which come from usecase
-        VehicleResponseDTO toResponse = vehicleWebMapper.toResponseDTO(result.getVehicle());
-                           toResponse.setCustomerId(result.getCustomer().getCustomerId());
-                           toResponse.setCustomerName(result.getCustomer().getCustomerName());
-
+        //use mapper create responseDTO
+        VehicleResponseDTO toResponse = vehicleWebMapper.customResponseDTO(result);
 
         //return response with updated values
-        return ResponseEntity.status(HttpStatus.CREATED).body(
+        return ResponseEntity.status(HttpStatus.OK).body(
                 new StandardResponse<>(
-                        201,
+                        200,
                         "Vehicle updated successful",
                         LocalDateTime.now(),
                         toResponse
@@ -109,17 +98,14 @@ public class VehicleController {
 
     //delete vehicle
     @DeleteMapping("/{vehicleId}")
-    public ResponseEntity<StandardResponse<VehicleResponseDTO>> deleteVehicles(
+    public ResponseEntity<StandardResponse<VehicleResponseDTO>> deleteVehicle(
             @PathVariable Long vehicleId
     ){
         //directly set id to usecase
         VehicleUpdateResult deleteResult = vehicleUseCase.deleteVehicle(vehicleId);
 
-        //get domain models and turn them into response
-        VehicleResponseDTO toResponse = vehicleWebMapper.toResponseDTO(deleteResult.getVehicle());
-                           toResponse.setCustomerId(deleteResult.getCustomer().getCustomerId());
-                           toResponse.setCustomerName(deleteResult.getCustomer().getCustomerName());
-
+        //use mapper to create response
+        VehicleResponseDTO toResponse = vehicleWebMapper.customResponseDTO(deleteResult);
 
        return ResponseEntity.status(HttpStatus.OK).body(
                 new StandardResponse<>(
