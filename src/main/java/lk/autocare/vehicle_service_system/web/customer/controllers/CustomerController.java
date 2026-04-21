@@ -7,6 +7,7 @@ import lk.autocare.vehicle_service_system.web.customer.DTOs.CustomerRequestDTO;
 import lk.autocare.vehicle_service_system.web.customer.DTOs.CustomerResponseDTO;
 import lk.autocare.vehicle_service_system.web.customer.webMappers.CustomerWebMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/autocare/customers")
 @RequiredArgsConstructor
+@Slf4j
 public class CustomerController {
 
     //inject customer usecase
@@ -28,6 +30,10 @@ public class CustomerController {
     //get all customers
     @GetMapping("/all")
     public ResponseEntity<StandardResponse<List<CustomerResponseDTO>>> getAllCustomers(){
+
+        //add logger
+        log.info("Request received for all customers");
+
         //get all customers as list from usecase
         List<Customer> customerList = customerUseCase.getAllCustomers();
 
