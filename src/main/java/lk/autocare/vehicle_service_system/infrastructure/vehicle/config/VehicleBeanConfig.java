@@ -13,8 +13,7 @@ class VehicleBeanConfig {
     @Bean
     VehicleUseCase vehicleUseCase(
             VehicleRepository vehicleRepository,
-            CustomerRepository customerRepository,
-            VehicleWebMapper vehicleWebMapper) {
-        return new VehicleUseCaseImpl(vehicleRepository,  customerRepository, vehicleWebMapper);
+            CustomerRepository customerRepository) {
+        return new VehicleUseCaseImpl(vehicleRepository,  customerRepository);
     }
 }
