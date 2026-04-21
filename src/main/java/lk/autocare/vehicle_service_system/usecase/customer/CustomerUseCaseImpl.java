@@ -3,7 +3,6 @@ package lk.autocare.vehicle_service_system.usecase.customer;
 import lk.autocare.vehicle_service_system.domain.models.Customer;
 import lk.autocare.vehicle_service_system.domain.repositories.CustomerRepository;
 import lk.autocare.vehicle_service_system.GlobalExceptionHandler.ResourceNotFoundException;
-import lk.autocare.vehicle_service_system.web.customer.DTOs.CustomerResponseDTO;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

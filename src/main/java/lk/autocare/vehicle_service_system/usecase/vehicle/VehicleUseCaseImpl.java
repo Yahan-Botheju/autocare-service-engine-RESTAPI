@@ -6,13 +6,10 @@ import lk.autocare.vehicle_service_system.domain.models.Vehicle;
 import lk.autocare.vehicle_service_system.domain.models.VehicleUpdateResult;
 import lk.autocare.vehicle_service_system.domain.repositories.CustomerRepository;
 import lk.autocare.vehicle_service_system.domain.repositories.VehicleRepository;
-import lk.autocare.vehicle_service_system.infrastructure.vehicle.persistence.entity.VehicleEntity;
-import lk.autocare.vehicle_service_system.web.vehicle.DTOs.VehicleResponseDTO;
-import lk.autocare.vehicle_service_system.web.vehicle.webMappers.VehicleWebMapper;
+
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class VehicleUseCaseImpl implements  VehicleUseCase{

@@ -2,7 +2,6 @@ package lk.autocare.vehicle_service_system.usecase.vehicle;
 
 import lk.autocare.vehicle_service_system.domain.models.Vehicle;
 import lk.autocare.vehicle_service_system.domain.models.VehicleUpdateResult;
-import lk.autocare.vehicle_service_system.web.vehicle.DTOs.VehicleResponseDTO;
 
 import java.util.List;
 

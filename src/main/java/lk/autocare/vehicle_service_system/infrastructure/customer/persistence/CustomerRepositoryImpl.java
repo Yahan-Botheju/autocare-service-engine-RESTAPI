@@ -1,13 +1,11 @@
 package lk.autocare.vehicle_service_system.infrastructure.customer.persistence;
 
 import lk.autocare.vehicle_service_system.domain.models.Customer;
-import lk.autocare.vehicle_service_system.domain.models.Vehicle;
 import lk.autocare.vehicle_service_system.domain.repositories.CustomerRepository;
 import lk.autocare.vehicle_service_system.infrastructure.customer.persistence.entity.CustomerEntity;
 import lk.autocare.vehicle_service_system.infrastructure.customer.persistence.jpa.JpaCustomerRepository;
 import lk.autocare.vehicle_service_system.infrastructure.customer.persistence.mapper.CustomerPersistenceMapper;
 import lk.autocare.vehicle_service_system.GlobalExceptionHandler.ResourceNotFoundException;
-import lk.autocare.vehicle_service_system.web.vehicle.DTOs.VehicleResponseDTO;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

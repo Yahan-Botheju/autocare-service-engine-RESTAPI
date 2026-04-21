@@ -1,6 +1,5 @@
 package lk.autocare.vehicle_service_system.GlobalResponseHandler;
 
-import lk.autocare.vehicle_service_system.web.customer.DTOs.CustomerResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

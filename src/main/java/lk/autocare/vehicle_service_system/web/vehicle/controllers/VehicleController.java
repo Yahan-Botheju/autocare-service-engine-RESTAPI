@@ -1,7 +1,6 @@
 package lk.autocare.vehicle_service_system.web.vehicle.controllers;
 
 import lk.autocare.vehicle_service_system.GlobalResponseHandler.StandardResponse;
-import lk.autocare.vehicle_service_system.domain.models.Customer;
 import lk.autocare.vehicle_service_system.domain.models.Vehicle;
 import lk.autocare.vehicle_service_system.domain.models.VehicleUpdateResult;
 import lk.autocare.vehicle_service_system.usecase.vehicle.VehicleUseCase;
@@ -66,7 +65,7 @@ public class VehicleController {
         VehicleUpdateResult registerResult = vehicleUseCase.saveVehicle(vehicleDomainModel);
 
         VehicleResponseDTO responseDTO = vehicleWebMapper.toResponseDTO(registerResult.getVehicle());
-                           responseDTO.setCustomerId(registerResult.getVehicle().getCustomerId());
+                           responseDTO.setCustomerId(registerResult.getCustomer().getCustomerId());
                            responseDTO.setCustomerName(registerResult.getCustomer().getCustomerName());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
