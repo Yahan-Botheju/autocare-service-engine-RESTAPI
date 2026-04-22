@@ -9,6 +9,7 @@ import lk.autocare.vehicle_service_system.domain.repositories.VehicleRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -33,7 +34,6 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
     }
 
 
-
     /*   PUBLIC METHODS   */
 
     //get all vehicle
@@ -46,6 +46,8 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
         //return them assigning customer model and vehicle model
         return vehicles.stream().map(vehicle -> {
             Customer customer = getCustomerDetails(vehicle.getCustomerId());
+            //call helper method for update next service date
+            vehicle.updateNextServiceDate();
             return new VehicleUpdateResult(vehicle, customer);
         }).toList();
     }
@@ -56,6 +58,9 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
 
         //save vehicle details through domain repo
         Vehicle savedVehicle = vehicleRepository.saveVehicle(vehicle);
+
+        //use helper method
+        vehicle.updateNextServiceDate();
 
         //get related customer id for saved vehicle(req)
         Customer customer = getCustomerDetails(savedVehicle.getCustomerId());
@@ -74,6 +79,9 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
 
         //set to update method in repo for update values
         Vehicle updatedVehicle = vehicleRepository.updateVehicle(vehicleId, vehicle);
+
+        //use helper method
+        vehicle.updateNextServiceDate();
 
         //updated model check with customer ID
         Customer customer = getCustomerDetails(updatedVehicle.getCustomerId());

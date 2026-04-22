@@ -56,6 +56,9 @@ public class CustomerController {
     public ResponseEntity<StandardResponse<CustomerResponseDTO>> saveCustomer(
             @RequestBody CustomerRequestDTO customerRequestDTO
     ){
+
+        log.info("Request received for saving customer");
+
         //turn requestDTO to domain model
         Customer toDomainModel = customerWebMapper.toDomainModel(customerRequestDTO);
 
@@ -64,6 +67,8 @@ public class CustomerController {
 
         //turn domain model to dto for response
         CustomerResponseDTO responseDTO = customerWebMapper.toResponseDTO(savedCustomer);
+
+        log.info("Saving customer successful..!!{}", responseDTO.getCustomerId());
 
         //create custom response
         return ResponseEntity.status(HttpStatus.CREATED).body(
@@ -81,6 +86,8 @@ public class CustomerController {
             @PathVariable Long customerId,
             @RequestBody CustomerRequestDTO customerRequestDTO
     ){
+        log.info("Request received for updating customer");
+
         //turn dto to domain model
         Customer customer = customerWebMapper.toDomainModel(customerRequestDTO);
 
@@ -89,6 +96,8 @@ public class CustomerController {
 
         //get that update domain model and turn to dto for response
         CustomerResponseDTO response = customerWebMapper.toResponseDTO(toDomainModel);
+
+        log.info("Updating customer successful.!.!{}", response.getCustomerId());
 
         //create custom response
        return ResponseEntity.status(HttpStatus.OK).body(
@@ -105,11 +114,16 @@ public class CustomerController {
     public ResponseEntity<StandardResponse<CustomerResponseDTO>> deleteCustomer(
             @PathVariable Long customerId
     ){
+
+        log.info("Request received for deleting customer");
+
         //set customer id to usecase
         Customer customer = customerUseCase.deleteCustomer(customerId);
 
         //turn customer into domain model
         CustomerResponseDTO responseDTO = customerWebMapper.toResponseDTO(customer);
+
+        log.info("Deleting customer successful..!!{}", responseDTO.getCustomerId());
 
         //create response
         return ResponseEntity.status(HttpStatus.OK).body(

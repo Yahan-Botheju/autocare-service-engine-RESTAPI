@@ -26,4 +26,10 @@ public class Vehicle {
     //customer object
     //private Customer customer;
 
+    //create helper method that affect all CRUD of vehicle
+    public void updateNextServiceDate(){
+        if(this.lastServiceDate != null){
+            this.nextServiceDate = this.lastServiceDate.plusMonths(6);
+        }
+    }
 }
