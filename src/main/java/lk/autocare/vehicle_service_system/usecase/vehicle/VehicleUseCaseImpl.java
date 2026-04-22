@@ -9,6 +9,7 @@ import lk.autocare.vehicle_service_system.domain.repositories.VehicleRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -31,6 +32,12 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
         return customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found" + " " +  customerId));
     }
+
+    //create next service date finder function
+    private LocalDate calculateNextServiceDate(LocalDate  lastServiceDate){
+        return lastServiceDate.plusMonths(6);
+    }
+
 
 
 
