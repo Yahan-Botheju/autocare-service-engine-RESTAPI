@@ -20,5 +20,5 @@ public interface VehicleRepository {
     Vehicle updateVehicle(Long vehicleId, Vehicle vehicle);
 
     //delete vehicle
-    Vehicle deleteVehicle(Long vehicleId);
+    void deleteVehicle(Long vehicleId);
 }

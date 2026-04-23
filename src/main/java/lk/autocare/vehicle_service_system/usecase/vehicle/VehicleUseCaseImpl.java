@@ -56,6 +56,10 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
     @Override
     public VehicleUpdateResult saveVehicle(Vehicle vehicle){
 
+        //check customer ID, for customer availability
+        vehicleRepository.findById(vehicle.getCustomerId())
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found" + " " +  vehicle.getCustomerId()));
+
         //save vehicle details through domain repo
         Vehicle savedVehicle = vehicleRepository.saveVehicle(vehicle);
 
@@ -93,19 +97,12 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
 
     //delete vehicle
     @Override
-    public VehicleUpdateResult deleteVehicle(Long vehicleId){
+    public void deleteVehicle(Long vehicleId){
         //check vehicle availability by ID
-        if(vehicleRepository.findById(vehicleId).isEmpty()){
-            throw new ResourceNotFoundException("Vehicle id not found" + " " + vehicleId);
-        }
+        vehicleRepository.findById(vehicleId).orElseThrow(() -> new ResourceNotFoundException("Vehicle id not found" + " " +  vehicleId));
+
         //set id to domain repo to remove from db
-        Vehicle toDomainModel =  vehicleRepository.deleteVehicle(vehicleId);
-
-        //check related vehicle owner
-        Customer customer = getCustomerDetails(toDomainModel.getCustomerId());
-
-        //return both vehicl model and customer
-        return new VehicleUpdateResult(toDomainModel, customer);
+        vehicleRepository.deleteVehicle(vehicleId);
     }
 }
 

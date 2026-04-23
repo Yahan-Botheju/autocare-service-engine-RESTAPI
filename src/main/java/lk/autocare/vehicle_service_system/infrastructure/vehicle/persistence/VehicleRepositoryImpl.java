@@ -66,13 +66,12 @@ public class VehicleRepositoryImpl implements  VehicleRepository {
 
     //delete vehicle
     @Override
-    public Vehicle deleteVehicle(Long vehicleId){
+    public void deleteVehicle(Long vehicleId){
         //check availability of vehicle
-        VehicleEntity vehicleEntity = jpaVehicleRepository.findById(vehicleId)
+        jpaVehicleRepository.findById(vehicleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Vehicle not found" + " "  + vehicleId));
         //set to remove from db through domain repo
         jpaVehicleRepository.deleteById(vehicleId);
 
-        return vehiclePersistenceMapper.toDomainModel(vehicleEntity);
     }
 }

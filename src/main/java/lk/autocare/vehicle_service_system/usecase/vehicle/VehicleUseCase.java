@@ -17,5 +17,5 @@ public interface VehicleUseCase {
     VehicleUpdateResult updateVehicle(Long vehicleId, Vehicle vehicle);
 
     //delete vehicle
-    VehicleUpdateResult deleteVehicle(Long vehicleId);
+    void deleteVehicle(Long vehicleId);
 }
