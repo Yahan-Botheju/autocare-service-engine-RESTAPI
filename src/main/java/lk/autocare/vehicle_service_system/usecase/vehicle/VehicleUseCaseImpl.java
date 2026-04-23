@@ -60,10 +60,13 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
         vehicleRepository.findById(vehicle.getCustomerId())
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found" + " " +  vehicle.getCustomerId()));
 
+        //call default service status set method (DOMAIN MODEL)
+        vehicle.setDefaultVehicleServiceStatus();
+
         //save vehicle details through domain repo
         Vehicle savedVehicle = vehicleRepository.saveVehicle(vehicle);
 
-        //use helper method
+        //use helper method (DOMAIN MODEL)
         vehicle.updateNextServiceDate();
 
         //get related customer id for saved vehicle(req)

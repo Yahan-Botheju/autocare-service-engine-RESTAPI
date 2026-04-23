@@ -19,17 +19,25 @@ public class Vehicle {
     private LocalDate lastServiceDate;
     private LocalDate nextServiceDate;
     private int mileage;
+    private VehicleServiceStatus vehicleServiceStatus;
 
     //add customer id fields, get value to mapper
     private Long customerId;
 
-    //customer object
+    //customer object (stack overflow)
     //private Customer customer;
 
     //create helper method that affect all CRUD of vehicle
     public void updateNextServiceDate(){
         if(this.lastServiceDate != null){
             this.nextServiceDate = this.lastServiceDate.plusMonths(6);
+        }
+    }
+
+    //create helper method to set to vehicle service status to PENDING when vehicle create
+    public void setDefaultVehicleServiceStatus(){
+        if(this.vehicleServiceStatus == null){
+            this.setVehicleServiceStatus(VehicleServiceStatus.PENDING);
         }
     }
 }
