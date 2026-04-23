@@ -56,6 +56,10 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
     @Override
     public VehicleUpdateResult saveVehicle(Vehicle vehicle){
 
+        //check customer ID, for customer availability
+        vehicleRepository.findById(vehicle.getCustomerId())
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found" + " " +  vehicle.getCustomerId()));
+
         //save vehicle details through domain repo
         Vehicle savedVehicle = vehicleRepository.saveVehicle(vehicle);
 
