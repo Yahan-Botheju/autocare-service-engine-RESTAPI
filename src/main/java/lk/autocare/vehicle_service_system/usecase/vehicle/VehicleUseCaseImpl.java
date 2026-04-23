@@ -81,8 +81,12 @@ public class VehicleUseCaseImpl implements  VehicleUseCase{
     @Override
     public VehicleUpdateResult updateVehicle(Long vehicleId, Vehicle vehicle){
         //check vehicle availability
-        if(vehicleRepository.findById(vehicleId).isEmpty()){
-            throw new ResourceNotFoundException("Vehicle id not found" + " " + vehicleId);
+        Vehicle existingVehicle = vehicleRepository.findById(vehicleId)
+                .orElseThrow(() ->  new ResourceNotFoundException("Vehicle not found" + " " +  vehicleId));
+
+        //set service status complete vehicle, disable to update
+        if (existingVehicle.getVehicleServiceStatus() == VehicleServiceStatus.COMPLETED){
+            throw new ResourceNotFoundException("Vehicle service already completed, unable to edit vehicle details");
         }
 
         //set to update method in repo for update values
