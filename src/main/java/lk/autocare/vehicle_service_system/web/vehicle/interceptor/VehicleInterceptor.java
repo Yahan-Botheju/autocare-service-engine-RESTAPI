@@ -25,6 +25,8 @@ public class VehicleInterceptor implements HandlerInterceptor {
         if("DELETE".equalsIgnoreCase(requestMethod) && uri.startsWith("/api/v1/autocare/vehicles/")) {
             if(role == null || !role.trim().equalsIgnoreCase("ADMIN")){
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
                 response.getWriter().write("Access Denied :  Only ADMIN can delete this vehicle");
 
                 return false;
@@ -35,13 +37,15 @@ public class VehicleInterceptor implements HandlerInterceptor {
         if("POST".equalsIgnoreCase(requestMethod) && uri.startsWith("/api/v1/autocare/vehicles/register")) {
             if(role == null || !role.trim().equalsIgnoreCase("ADMIN")){
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
                 response.getWriter().write("Access Denied :  Only ADMIN can create this vehicle");
 
                 return false;
             }
         }
 
-                
+
 
         return true;
 
