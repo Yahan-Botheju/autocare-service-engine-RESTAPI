@@ -57,7 +57,7 @@ public class VehicleInterceptor implements HandlerInterceptor {
             }
         }
 
-        //only admin can get all vehicles details
+        //only admin can update vehicles details
         if("PUT".equalsIgnoreCase(requestMethod) && uri.startsWith("/api/v1/autocare/vehicles/")){
             if(role == null || !role.trim().equalsIgnoreCase("ADMIN")){
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
