@@ -1,5 +1,6 @@
 package lk.autocare.vehicle_service_system.domain.models;
 
+import lk.autocare.vehicle_service_system.GlobalExceptionHandler.ServiceAlreadyCompletedException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,6 +39,13 @@ public class Vehicle {
     public void setDefaultVehicleServiceStatus(){
         if(this.vehicleServiceStatus == null){
             this.setVehicleServiceStatus(VehicleServiceStatus.PENDING);
+        }
+    }
+
+    //check vehicle service status is PENDING,then throw an error
+    public void disableVehicleUpdate(){
+        if(this.vehicleServiceStatus == VehicleServiceStatus.COMPLETED){
+            throw new ServiceAlreadyCompletedException("Service is already completed, unable to update vehicle");
         }
     }
 }
