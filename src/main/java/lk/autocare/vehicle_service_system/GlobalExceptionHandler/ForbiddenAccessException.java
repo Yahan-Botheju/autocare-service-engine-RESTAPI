@@ -1,7 +1,7 @@
 package lk.autocare.vehicle_service_system.GlobalExceptionHandler;
 
-public class ForbiddenAccessExceptioN extends RuntimeException {
-  public ForbiddenAccessExceptioN(String message) {
-    super(message);
-  }
+public class ForbiddenAccessException extends RuntimeException {
+    public ForbiddenAccessException(String message) {
+        super(message);
+    }
 }
