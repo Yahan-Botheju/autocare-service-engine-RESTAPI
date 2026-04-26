@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class VehicleRepositoryImplTest {
@@ -43,6 +43,18 @@ public class VehicleRepositoryImplTest {
         assertTrue(result.isPresent());
         assertEquals(dummyVehicleDomain, result.get());
 
+    }
+
+    @Test
+    void shouldDeleteVehicle(){
+        Long vehicleId = 1L;
+        VehicleEntity dummyVehicleEntity = new VehicleEntity();
+
+        when(jpaVehicleRepository.findById(vehicleId)).thenReturn(Optional.of(dummyVehicleEntity));
+
+        vehicleRepositoryImpl.deleteVehicle(vehicleId);
+
+        verify(jpaVehicleRepository,times(1)).deleteById(vehicleId);
     }
 }
 
