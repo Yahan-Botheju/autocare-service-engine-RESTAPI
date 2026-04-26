@@ -56,6 +56,33 @@ public class VehicleRepositoryImplTest {
 
         verify(jpaVehicleRepository,times(1)).deleteById(vehicleId);
     }
+
+    @Test
+    void shouldSaveVehicle(){
+        VehicleEntity dummyVehicleEntity = new VehicleEntity();
+        Vehicle dummyVehicleDomain = new Vehicle();
+
+        //request entity by giving domain model
+        when(vehiclePersistenceMapper.toEntity(dummyVehicleDomain))
+                .thenReturn(dummyVehicleEntity);
+
+        //request domain model by giving entity
+        when(vehiclePersistenceMapper.toDomainModel(dummyVehicleEntity))
+                .thenReturn(dummyVehicleDomain);
+
+        //tell jpa to save the entity and return entity
+        when(jpaVehicleRepository.save(dummyVehicleEntity))
+                .thenReturn(dummyVehicleEntity);
+
+        //call repoImpl method and save vehicle
+        Vehicle result = vehicleRepositoryImpl.saveVehicle(dummyVehicleDomain);
+
+        //check create domain model is saved in db
+        assertEquals(dummyVehicleDomain, result);
+
+        //check new record has created
+        verify(jpaVehicleRepository,times(1)).save(dummyVehicleEntity);
+    }
 }
 
 
