@@ -31,6 +31,16 @@ public class VehicleTest {
         assertDoesNotThrow(vehicle::disableVehicleUpdate);
 
     }
+    @Test
+    public void setDefaultVehicleServiceStatus(){
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setDefaultVehicleServiceStatus();
+
+
+        assertEquals(VehicleServiceStatus.PENDING, vehicle.getVehicleServiceStatus());
+    }
+
 
     @Test
     public void shouldCalculateNextServiceDateCorrectly(){
