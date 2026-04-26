@@ -41,6 +41,9 @@ out/
 
 # .gitignore file එකට මේවා එකතු කරන්න
 *.hprof
-*.log
 .idea/
 target/
+
+# Ignore all log files
+/logs/
+*.log
