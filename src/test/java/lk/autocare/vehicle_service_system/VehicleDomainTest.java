@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class VehicleTest {
+public class VehicleDomainTest {
 
     @Test
     public void shouldThrowExceptionWhenServiceIsCompleted(){
@@ -30,6 +30,27 @@ public class VehicleTest {
 
         assertDoesNotThrow(vehicle::disableVehicleUpdate);
 
+    }
+    @Test
+    public void setDefaultVehicleServiceStatus(){
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setDefaultVehicleServiceStatus();
+
+
+        assertEquals(VehicleServiceStatus.PENDING, vehicle.getVehicleServiceStatus());
+    }
+
+    //negative case
+    @Test
+    public void setDefaultVehicleStatusNegative(){
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setVehicleServiceStatus(VehicleServiceStatus.COMPLETED);
+
+        vehicle.setDefaultVehicleServiceStatus();
+
+        assertEquals(VehicleServiceStatus.COMPLETED, vehicle.getVehicleServiceStatus());
     }
 
     @Test
