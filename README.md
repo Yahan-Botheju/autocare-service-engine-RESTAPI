@@ -56,7 +56,7 @@ The system demonstrates:
 | Security         | Spring Security                 |
 | Boilerplate      | Lombok                          |
 | Architecture     | Clean Architecture              |
-
+| Code Analysis    | SonarQube                       |
 ---
 
 # 🏗️ Architecture Overview
