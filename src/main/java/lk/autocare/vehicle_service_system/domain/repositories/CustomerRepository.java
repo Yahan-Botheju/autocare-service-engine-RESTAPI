@@ -20,5 +20,5 @@ public interface CustomerRepository {
     Customer updateCustomer(Long customerId, Customer customer);
 
     //delete customer
-    Customer deleteCustomer(Long customerId);
+    void deleteCustomer(Long customerId);
 }

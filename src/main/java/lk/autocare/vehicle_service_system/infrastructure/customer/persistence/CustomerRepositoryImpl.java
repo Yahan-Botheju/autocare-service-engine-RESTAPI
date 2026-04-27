@@ -67,16 +67,14 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     //delete customer
     @Override
-    public Customer deleteCustomer(Long customerId){
+    public void deleteCustomer(Long customerId){
         //check customer availability
-        CustomerEntity customerEntity = jpaCustomerRepository.findById(customerId)
+        jpaCustomerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid Customer Id" + " " +customerId));
 
         //then delete customer
         jpaCustomerRepository.deleteById(customerId);
 
-        //turn taken customer data into domain mode then return
-        return customerPersistenceMapper.toDomainModel(customerEntity);
     }
 
     //find customer by id, turn into domain model
