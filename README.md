@@ -352,7 +352,7 @@ Fields:
 # 📂 Project Structure
 
 
-└── 📁 vehicle_service_system
+   📁 vehicle_service_system
     ├── 📁 domain                                       @Core Business Logic & Enterprise Rules
     │   ├── 📁 models                                   @Pure Domain Entities (No Framework Logic)
     │   │   ├── Customer.java
