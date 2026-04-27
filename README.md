@@ -250,9 +250,11 @@ Handles application logic.
 ### Rules
 
 - Customer must exist before assigning vehicle
-- Completed vehicles cannot be updated
+- Inprogress or Completed vehicles cannot be updated or deleted
 - Service date auto-calculated
-
+- Default update vehicle service status as PENDING
+- Register new vehicle should have customer ID along with registration
+  
 ---
 
 ## 📌 Infrastructure Layer
